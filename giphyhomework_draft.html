@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Galdeano" rel="stylesheet"> 
+	<title>GifTastic</title>
+</head>
+<body style='background: url("https://www.toptal.com/designers/subtlepatterns/patterns/diamond_upholstery.png")'>
+    <!--Page header goes here -->
+    <div class="jumbotron align-middle gameText bg-dark ">
+        <h1 class="text-center text-info"><strong>GifTastic</strong></h1>
+        <p class="text-center  subText text-light">Intructions: Type the name of the animal to see a list of gifs according to the search criteria then click on Submit button</p>
+		<!-- Search section -->
+		<div class = "container gameText text-info">
+			<form class="form-inline">
+				<div class="form-group mx-sm-3 mb-2">
+					<label for="input" class="sr-only"></label>
+					<input class="form-control" id="animal-field" placeholder="Enter text to search">
+				</div>
+			  <button class="btn btn-primary mb-2" id="submit">Submit</button>
+			</form>
+		</div>
+    </div>
+
+	
+	<!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript">
+	
+	//my Giphy API 
+	//Api Key:
+	//LTquGShEHub3lUf37pLEapFEct8cTpcl
+	 
+	 $( document ).ready(function() {
+	 
+	 var tag_var = $("#animal-field").val().trim();
+	 
+			$("#submit").on("click", function() {
+				if (tag_var !="") {
+					console.log(tag_var);
+					var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=LTquGShEHub3lUf37pLEapFEct8cTpcltag="
+					var queryURL= queryURL+tag_var;
+					console.log(queryURL);
+				}	
+				else	 {		
+					alert("Please enter animal to search");
+				}
+			});
+			
+		
+	});
+	 
+	 /*
+		var tag_var = $("#animal-field").val().trim();
+		console.log(tag_var);
+	
+		$("#submit").on("click", function() {
+
+		// Storing our giphy API URL for a random cat image
+		var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=LTquGShEHub3lUf37pLEapFEct8cTpcltag="
+		
+		var queryURL= queryURL+tag_var;
+		console.log(queryURL);
+		
+		
+		  var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";*/
+
+		  /*
+		  
+		// Perfoming an AJAX GET request to our queryURL
+			  $.ajax({
+				url: queryURL,
+				method: "GET"
+			  })
+
+		// After the data from the AJAX request comes back
+			.then(function(response) {
+
+		// Saving the image_original_url property
+			var imageUrl = response.data.image_original_url;
+
+		// Creating and storing an image tag
+			var catImage = $("<img>");
+
+		// Setting the catImage src attribute to imageUrl
+			catImage.attr("src", imageUrl);
+			catImage.attr("alt", "cat image");
+
+		// Prepending the catImage to the images div
+			$("#images").prepend(catImage);
+			});
+	});
+			*/
+		
+
+	
+	
+	</script>
+
+</body>
+</html>
